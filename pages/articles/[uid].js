@@ -1,13 +1,36 @@
 import Head from "next/head";
 import { PrismicLink, PrismicText, SliceZone } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
-
+import dynamic from 'next/dynamic'
 import { createClient } from "../../prismicio";
+// const createClient = dynamic(() => import('../../prismicio'), {
+//   ssr: false,
+// })
+// const {components} = dynamic(() => import('../../slices'))
+const Layout = dynamic(() =>
+  import('../../components/Layout').then((mod) => mod.Layout)
+)
+const Heading = dynamic(() =>
+  import('../../components/Heading').then((mod) => mod.Heading)
+)
+const Bounded = dynamic(() =>
+  import('../../components/Bounded').then((mod) => mod.Bounded)
+)
+const HorizontalDivider = dynamic(() =>
+  import('../../components/HorizontalDivider').then((mod) => mod.HorizontalDivider)
+)
+// const components = dynamic(() =>
+//   import('../../slices').then((mod) => mod.components)
+// )
+// const {Layout} = dynamic(() => import('../../components/Layout'))
+// const {Heading} = dynamic(() => import('../../components/Heading'))
+// const {Bounded} = dynamic(() => import('../../components/Bounded'))
+// const {HorizontalDivider} = dynamic(() => import('../../components/HorizontalDivider'))
 import { components } from "../../slices";
-import { Layout } from "../../components/Layout";
-import { Bounded } from "../../components/Bounded";
-import { Heading } from "../../components/Heading";
-import { HorizontalDivider } from "../../components/HorizontalDivider";
+// import { Layout } from "../../components/Layout";
+// import { Bounded } from "../../components/Bounded";
+// import { Heading } from "../../components/Heading";
+// import { HorizontalDivider } from "../../components/HorizontalDivider";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
